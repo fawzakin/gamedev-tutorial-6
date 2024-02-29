@@ -1,11 +1,121 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/touch_grass.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/background.png" type="Texture" id=3]
+[ext_resource path="res://scenes/touch_rock.tres" type="TileSet" id=4]
+[ext_resource path="res://scenes/extra_map.tres" type="TileSet" id=5]
+[ext_resource path="res://scenes/WinRocket.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/FishSpawner.gd" type="Script" id=7]
+[ext_resource path="res://scenes/FishBlue.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/FishKiller.gd" type="Script" id=9]
+[ext_resource path="res://scenes/FishRed.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Collectible.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 910.125, 57.875 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3985.5, 85.375 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 192, 32 )
 
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 144, 52 )
+position = Vector2( 168, 80 )
+z_index = 10
 collision_layer = 3
 collision_mask = 3
 speed = 300
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -131076, 0, 1, -131075, 0, 1, -131074, 0, 1, -131073, 0, 1, -65540, 0, 1, -65539, 0, 1, -65538, 0, 1, -65537, 0, 1, -131054, 0, 65543, -4, 0, 1, -3, 0, 1, -2, 0, 1, -1, 0, 1, -65531, 0, 65537, -65530, 0, 65539, -65523, 0, 65541, -65522, 0, 65543, -65521, 0, 65538, -65520, 0, 65538, -65519, 0, 65538, -65518, 0, 1, -65512, 0, 65536, -65510, 0, 65543, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 8, 0, 65541, 9, 0, 4, 12, 0, 65541, 13, 0, 8, 14, 0, 1, 18, 0, 1, 22, 0, 65543, 26, 0, 1, 27, 0, 6, 33, 0, 5, 34, 0, 65540, 131068, 0, 1, 131069, 0, 1, 131070, 0, 1, 131071, 0, 1, 65536, 0, 65543, 65537, 0, 65543, 65538, 0, 65540, 65543, 0, 65541, 65544, 0, 8, 65547, 0, 65543, 65548, 0, 8, 65549, 0, 1, 65550, 0, 1, 65551, 0, 65538, 65552, 0, 65539, 65556, 0, 65536, 65558, 0, 1, 65562, 0, 1, 65570, 0, 7, 65571, 0, 65540, 196604, 0, 1, 196605, 0, 1, 196606, 0, 1, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 7, 131075, 0, 6, 131078, 0, 5, 131079, 0, 8, 131080, 0, 1, 131081, 0, 65539, 131083, 0, 1, 131084, 0, 1, 131085, 0, 1, 131086, 0, 1, 131090, 0, 65536, 131094, 0, 1, 131095, 0, 65538, 131096, 0, 65538, 131097, 0, 65538, 131098, 0, 1, 262140, 0, 1, 262141, 0, 1, 262142, 0, 1, 262143, 0, 1, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 262144, 0, 1, 262145, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+format = 1
+tile_data = PoolIntArray( 66, 0, 5, 68, 0, 65540, 72, 0, 3, 74, 0, 65543, 76, 0, 4, 131140, 0, 7, 131142, 0, 65540, 262212, 0, 1, 262214, 0, 7, 262216, 0, 65543, 262218, 0, 65543, 262220, 0, 65543, 262222, 0, 4, 262229, 0, 65536 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ExtraMap" type="TileMap" parent="."]
+z_as_relative = false
+tile_set = ExtResource( 5 )
+format = 1
+tile_data = PoolIntArray( -262114, 0, 65538, -262111, 0, 917507, -262092, 0, 917507, -131028, 0, 917507, -131018, 0, 327683, -131006, 0, 458756, 0, 0, 917507, 22, 0, 917507, 56, 0, 4, 58, 0, 4, 60, 0, 4, 62, 0, 4, 64, 0, 4, 131078, 0, 917507, 131084, 0, 917507, 131118, 0, 983041, 131120, 0, 983041, 131122, 0, 983041, 131146, 0, 786435, 131149, 0, 393218 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collectible" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1216, 192 )
+
+[node name="Collectible2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2040, 72 )
+
+[node name="Collectible3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 5504, 192 )
+
+[node name="Collectible4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 768, -184 )
+
+[node name="FishSpawner" type="Node2D" parent="."]
+position = Vector2( 2502, -720 )
+script = ExtResource( 7 )
+obstacle = ExtResource( 8 )
+
+[node name="FishSpawner2" type="Node2D" parent="."]
+position = Vector2( 2730, -720 )
+script = ExtResource( 7 )
+obstacle = ExtResource( 8 )
+
+[node name="FishSpawner3" type="Node2D" parent="."]
+position = Vector2( 3874, -720 )
+script = ExtResource( 7 )
+obstacle = ExtResource( 10 )
+
+[node name="FishKiller" type="Area2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishKiller"]
+position = Vector2( 3339.88, 695 )
+shape = SubResource( 24 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 504, 288 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WinRocket" parent="." instance=ExtResource( 6 )]
+position = Vector2( 4792, -248 )
+
+[node name="Death" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bottom Pit" type="CollisionShape2D" parent="Death"]
+position = Vector2( 3454.5, 533.375 )
+shape = SubResource( 1 )
+
+[node name="Spikes" type="CollisionShape2D" parent="Death"]
+unique_name_in_owner = true
+position = Vector2( 3136, 224 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="FishKiller" to="FishKiller" method="_on_FishKiller_body_entered"]
+[connection signal="body_entered" from="WinRocket" to="Player" method="_on_WinRocket_body_entered"]
+[connection signal="body_entered" from="Death" to="Player" method="_on_Death_body_entered"]
