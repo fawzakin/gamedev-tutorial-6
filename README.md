@@ -1,6 +1,9 @@
-# Gamedev Tutorial 4
+# Gamedev Tutorial 6
 
-Tutorial Page: [https://csui-game-development.github.io/tutorials/tutorial-4/](https://csui-game-development.github.io/tutorials/tutorial-4/)
+Tutorial Page: [https://csui-game-development.github.io/tutorials/tutorial-4/](https://csui-game-development.github.io/tutorials/tutorial-6/)
+
+# NOTE
+I replace live count with collectible count instead. I only have one level so who cares with lives anyway?
 
 # Controls
 - WASD: Move
